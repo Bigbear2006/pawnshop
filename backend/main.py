@@ -12,10 +12,14 @@ async def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
     django.setup()
 
-    from bot.handlers import commands
+    from bot.handlers import commands, bonus_balance, branches, online_evaluation, social_media
 
     dp.include_routers(
         commands.router,
+        bonus_balance.router,
+        branches.router,
+        online_evaluation.router,
+        social_media.router,
     )
     dp.message.filter(F.chat.type == 'private')
 
