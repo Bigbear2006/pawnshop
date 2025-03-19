@@ -12,7 +12,13 @@ async def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
     django.setup()
 
-    from bot.handlers import commands, bonus_balance, branches, online_evaluation, social_media
+    from bot.handlers import (
+        bonus_balance,
+        branches,
+        commands,
+        online_evaluation,
+        social_media,
+    )
 
     dp.include_routers(
         commands.router,
