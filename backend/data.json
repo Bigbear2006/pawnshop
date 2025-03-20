@@ -1,0 +1,86 @@
+[
+{
+  "model": "core.spendoption",
+  "pk": 1,
+  "fields": {
+    "text": "Скидка на покупку 10%"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 2,
+  "fields": {
+    "text": "Какой-то подарок"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 1,
+  "fields": {
+    "title": "60 лет октября (Красноярский край, г. Красноярск, ул. 60 лет октября д. 62 пом. 1)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 2,
+  "fields": {
+    "title": "Калинина (660048, г. Красноярск, ул. Калинина, д. 6, пом. 91)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 3,
+  "fields": {
+    "title": "Копылова (Красноярский край, г. Красноярск, ул. Копылова, д. 70, пом. 2)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 4,
+  "fields": {
+    "title": "Медецинский (г Красноярск пер Медецинский 5)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 5,
+  "fields": {
+    "title": "Свердловская (ул. Свердловская, д. 141 пом 145)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 6,
+  "fields": {
+    "title": "Тельмана (г. Красноярск, ул. Тельмана, д.27, пом. 17)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.branch",
+  "pk": 7,
+  "fields": {
+    "title": "Ширинская (г Красноярск ул Ширинская 3 А пом 36)",
+    "work_schedule": "c 12:00 до 00:00",
+    "manager_url": "https://t.me/johanliebertmonster"
+  }
+},
+{
+  "model": "core.onlineevaluationguide",
+  "pk": 1,
+  "fields": {
+    "text": "Тут будет инструкция по онлайн оценке..."
+  }
+}
+]

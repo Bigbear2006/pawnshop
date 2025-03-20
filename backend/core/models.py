@@ -96,7 +96,7 @@ class Branch(models.Model):
     class Meta:
         verbose_name = 'Филиал'
         verbose_name_plural = 'Филиалы'
-        ordering = ['-title']
+        ordering = ['title']
 
     def __str__(self):
         return self.title[:25]
