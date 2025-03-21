@@ -7,6 +7,16 @@ env = Env()
 env.read_env()
 
 
+def load_access_token():
+    try:
+        with open('token.txt', 'r', encoding='utf-8') as f:
+            token = f.read()
+    except FileNotFoundError:
+        with open('token.txt', 'w', encoding='utf-8') as _:
+            token = ''
+    return token
+
+
 @dataclass
 class Settings:
     BOT_TOKEN: str = field(default_factory=lambda: env('BOT_TOKEN'))
@@ -14,7 +24,7 @@ class Settings:
 
     SMART_LOMBARD_ACCOUNT_ID: int = field(default_factory=lambda: env('SMART_LOMBARD_ACCOUNT_ID'))
     SMART_LOMBARD_SECRET_KEY: str = field(default_factory=lambda: env('SMART_LOMBARD_SECRET_KEY'))
-    SMART_LOMBARD_ACCESS_TOKEN: str = field(default_factory=lambda: env('SMART_LOMBARD_ACCESS_TOKEN'))
+    SMART_LOMBARD_ACCESS_TOKEN: str = field(default_factory=load_access_token)
     SMART_LOMBARD_BASE_URL: str = field(default='https://online.smartlombard.ru/api/exchange/v1/')
 
     FORWARD_CHAT_ID: str = field(default='-1002309981972')

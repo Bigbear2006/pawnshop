@@ -1,6 +1,8 @@
+import asyncio
+
 from aiohttp import ClientSession
 
-from bot.loader import logger
+from bot.loader import logger, loop
 from bot.settings import settings
 
 
@@ -57,3 +59,29 @@ class SmartLombardAPI:
                     return None
 
                 return data['result']['client_natural_person']
+
+
+async def refresh_access_token():
+    data = await SmartLombardAPI.login()
+
+    if not data['status']:
+        logger.info(
+            f'Error during the access_token receiving: '
+            f'{data["error"].get("message")}'
+        )
+        await asyncio.sleep(21 * 60)
+        loop.create_task(refresh_access_token())
+        return
+
+    with open('token.txt', 'w', encoding='utf-8') as f:
+        access_token = data['result']['access_token']['token']
+        f.write(access_token)
+
+    settings.SMART_LOMBARD_ACCESS_TOKEN = access_token
+    logger.info(
+        f'access_token was changed to '
+        f'{settings.SMART_LOMBARD_ACCESS_TOKEN}'
+    )
+
+    await asyncio.sleep(21 * 60)
+    loop.create_task(refresh_access_token())

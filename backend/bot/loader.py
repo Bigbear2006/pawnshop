@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
@@ -16,3 +17,4 @@ logger.setLevel(logging.INFO)
 bot = Bot(settings.BOT_TOKEN)
 storage = RedisStorage.from_url(settings.REDIS_URL)
 dp = Dispatcher(storage=storage)
+loop = asyncio.get_event_loop()
