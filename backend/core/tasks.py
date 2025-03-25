@@ -28,6 +28,7 @@ def handle_send_message_errors(send_message_func):
                 f'Cannot send a message to user (id={chat_id}) '
                 f'because of an {e.__class__.__name__} error: {str(e)}',
             )
+
     return decorator
 
 

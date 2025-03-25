@@ -1,7 +1,10 @@
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
 
-from bot.keyboards.inline import back_button_kb, keyboard_from_queryset, get_branch_keyboard
+from bot.keyboards.inline import (
+    get_branch_keyboard,
+    keyboard_from_queryset,
+)
 from core.models import Branch
 
 router = Router()

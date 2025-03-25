@@ -2,8 +2,11 @@ from aiogram import F, Router
 from aiogram.types import CallbackQuery
 
 from bot.api import SmartLombardAPI
-from bot.keyboards.inline import keyboard_from_queryset, back_button_kb, one_button_keyboard
-from core.models import SpendOption, Client
+from bot.keyboards.inline import (
+    keyboard_from_queryset,
+    one_button_keyboard,
+)
+from core.models import Client, SpendOption
 
 router = Router()
 
@@ -19,7 +22,7 @@ async def bonus_balance(query: CallbackQuery):
         reply_markup=await keyboard_from_queryset(
             SpendOption,
             prefix='spend_option',
-            back_button_data='switch_to_menu_kb'
+            back_button_data='switch_to_menu_kb',
         ),
     )
 

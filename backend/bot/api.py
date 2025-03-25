@@ -29,9 +29,9 @@ class SmartLombardAPI:
     async def get_client_by_phone(phone: str) -> dict | None:
         async with ClientSession(settings.SMART_LOMBARD_BASE_URL) as session:
             async with session.get(
-                    'clients/natural_persons/',
-                    headers=SmartLombardAPI.get_headers(),
-                    params={'phone': phone}
+                'clients/natural_persons/',
+                headers=SmartLombardAPI.get_headers(),
+                params={'phone': phone},
             ) as rsp:
                 data = await rsp.json()
                 logger.info(data)
@@ -40,17 +40,21 @@ class SmartLombardAPI:
                     return None
 
                 client = data['result']['clients_natural_persons'][0]
-                return client if (
+                return (
+                    client
+                    if (
                         settings.PHONE_REGEXP.sub('', client['phone'])
                         == settings.PHONE_REGEXP.sub('', phone)
-                ) else None
+                    )
+                    else None
+                )
 
     @staticmethod
     async def get_client(client_id: int | str) -> dict | None:
         async with ClientSession(settings.SMART_LOMBARD_BASE_URL) as session:
             async with session.get(
-                    f'clients/natural_persons/{client_id}',
-                    headers=SmartLombardAPI.get_headers(),
+                f'clients/natural_persons/{client_id}',
+                headers=SmartLombardAPI.get_headers(),
             ) as rsp:
                 data = await rsp.json()
                 logger.info(data)
@@ -67,7 +71,7 @@ async def refresh_access_token():
     if not data['status']:
         logger.info(
             f'Error during the access_token receiving: '
-            f'{data["error"].get("message")}'
+            f'{data["error"].get("message")}',
         )
         await asyncio.sleep(21 * 60)
         loop.create_task(refresh_access_token())
@@ -79,8 +83,7 @@ async def refresh_access_token():
 
     settings.SMART_LOMBARD_ACCESS_TOKEN = access_token
     logger.info(
-        f'access_token was changed to '
-        f'{settings.SMART_LOMBARD_ACCESS_TOKEN}'
+        f'access_token was changed to {settings.SMART_LOMBARD_ACCESS_TOKEN}',
     )
 
     await asyncio.sleep(21 * 60)

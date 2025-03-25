@@ -25,7 +25,7 @@ async def start(msg: Message):
     if client.smart_lombard_id:
         await msg.answer(
             f'Привет, {msg.from_user.full_name}!',
-            reply_markup=menu_kb
+            reply_markup=menu_kb,
         )
         return
 
@@ -45,8 +45,10 @@ async def auth(msg: Message):
         await msg.answer('Пользователя с таким номером телефона нет.')
         return
 
-    await Client.objects.filter(pk=msg.chat.id)\
-        .aupdate(phone=client['phone'], smart_lombard_id=client['id'])
+    await Client.objects.filter(pk=msg.chat.id).aupdate(
+        phone=client['phone'],
+        smart_lombard_id=client['id'],
+    )
 
     message = await msg.answer(
         'Вы успешно авторизовались по номеру телефона.',
@@ -60,7 +62,7 @@ async def auth(msg: Message):
 
 
 @router.callback_query(F.data == 'to_menu')
-async def switch_to_menu_kb(query: CallbackQuery, state: FSMContext):
+async def to_menu(query: CallbackQuery, state: FSMContext):
     await state.clear()
     await query.message.answer(
         'Вы перешли в главное меню',

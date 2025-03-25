@@ -3,10 +3,10 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
-from bot.keyboards.inline import back_button_kb, evaluation_kb, to_menu_kb
+from bot.keyboards.inline import evaluation_kb, to_menu_kb
 from bot.settings import settings
 from bot.states import EvaluationState
-from core.models import OnlineEvaluationGuide, Client
+from core.models import Client, OnlineEvaluationGuide
 
 router = Router()
 
@@ -46,8 +46,9 @@ async def set_amount(msg: Message, state: FSMContext):
         return
 
     client = await Client.objects.aget(pk=msg.chat.id)
-    caption = f'Онлайн оценка\n\nЖелаемая сумма: {amount}\n' \
-              f'Телефон: {client.phone}\n'
+    caption = (
+        f'Онлайн оценка\n\nЖелаемая сумма: {amount}\nТелефон: {client.phone}\n'
+    )
     if msg.chat.username:
         caption += f'Юзернейм @{msg.chat.username}'
 
@@ -62,4 +63,3 @@ async def set_amount(msg: Message, state: FSMContext):
         'Готово, в ближайшее время с вами свяжется наш менеджер',
         reply_markup=to_menu_kb,
     )
-

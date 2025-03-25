@@ -17,5 +17,6 @@ def after_publication_create(sender, instance, created, **kwargs):
         send_publication.delay(
             instance.text,
             unquote(instance.media.url.lstrip('/'))
-            if instance.media else None,
+            if instance.media
+            else None,
         )

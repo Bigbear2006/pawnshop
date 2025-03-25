@@ -1,4 +1,3 @@
-import asyncio
 import os
 
 import django
@@ -6,7 +5,7 @@ from aiogram import F
 from aiogram.enums import ChatType
 from aiogram.types import BotCommand
 
-from bot.api import SmartLombardAPI, refresh_access_token
+from bot.api import refresh_access_token
 from bot.loader import bot, dp, logger, loop
 from bot.settings import settings
 

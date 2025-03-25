@@ -9,18 +9,26 @@ menu_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text='Баланс бонусов', callback_data='bonus_balance',
-            ),
-        ],
-        [InlineKeyboardButton(text='Филиалы', callback_data='branches')],
-        [
-            InlineKeyboardButton(
-                text='Онлайн оценка', callback_data='online_evaluation',
+                text='Баланс бонусов',
+                callback_data='bonus_balance',
             ),
         ],
         [
             InlineKeyboardButton(
-                text='Наши соцсети', callback_data='social_media',
+                text='Онлайн оценка',
+                callback_data='online_evaluation',
+            ),
+        ],
+        [
+            InlineKeyboardButton(text='Филиалы', callback_data='branches'),
+            InlineKeyboardButton(
+                text='Автозаймы', url=settings.AUTOLOAN_SITE_URL,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text='Наши соцсети',
+                callback_data='social_media',
             ),
             InlineKeyboardButton(text='Наш сайт', url=settings.SITE_URL),
         ],
@@ -41,7 +49,8 @@ social_media_kb = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text='Назад', callback_data='switch_to_menu_kb',
+                text='Назад',
+                callback_data='switch_to_menu_kb',
             ),
         ],
     ],
@@ -51,7 +60,8 @@ back_button_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text='Назад', callback_data='switch_to_menu_kb',
+                text='Назад',
+                callback_data='switch_to_menu_kb',
             ),
         ],
     ],
@@ -62,12 +72,13 @@ evaluation_kb = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text='Загрузить фото',
-                callback_data='upload_photo'
-            )
+                callback_data='upload_photo',
+            ),
         ],
         [
             InlineKeyboardButton(
-                text='Назад', callback_data='switch_to_menu_kb',
+                text='Назад',
+                callback_data='switch_to_menu_kb',
             ),
         ],
     ],
@@ -75,9 +86,9 @@ evaluation_kb = InlineKeyboardMarkup(
 
 
 def one_button_keyboard(
-        *,
-        back_button_data: str = None,
-        **kwargs
+    *,
+    back_button_data: str = None,
+    **kwargs,
 ) -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
 
@@ -90,10 +101,10 @@ def one_button_keyboard(
 
 
 async def keyboard_from_queryset(
-        model: type[Model],
-        *,
-        prefix: str,
-        back_button_data: str = None,
+    model: type[Model],
+    *,
+    prefix: str,
+    back_button_data: str = None,
 ) -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
 
