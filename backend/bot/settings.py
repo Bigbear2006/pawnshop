@@ -34,12 +34,14 @@ class Settings:
     )
 
     FORWARD_CHAT_ID: str = field(default='-1002309981972')
-    SITE_URL: str = field(default_factory=lambda: 'https://google.com/')
+    SITE_URL: str = field(default_factory=lambda: 'https://kras-almaz24.ru')
     AUTOLOAN_SITE_URL: str = field(
-        default_factory=lambda: 'https://google.com/',
+        default_factory=lambda: 'http://auto.kras-almaz.ru',
     )
-    VK_URL: str = field(default_factory=lambda: 'https://vk.com/')
-    TG_URL: str = field(default_factory=lambda: 'https://t.me/search_net_bot')
+    VK_URL: str = field(
+        default_factory=lambda: 'https://vk.com/almazlombardkrsk',
+    )
+    TG_URL: str = field(default_factory=lambda: 'https://t.me/lombard_almaz')
 
     PHONE_REGEXP: re.Pattern = field(default=re.compile('[^0-9]+'))
 

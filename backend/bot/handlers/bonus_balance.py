@@ -17,7 +17,8 @@ async def bonus_balance(query: CallbackQuery):
     client = await SmartLombardAPI.get_client(client.smart_lombard_id)
 
     await query.message.edit_text(
-        f'Ваш бонусный баланс: {client.get("bonuses") or 0}\n'
+        f'Ваш бонусный баланс: {client.get("bonuses") or 0} '
+        f'(1 бонус = 1 рубль)\n'
         'Вот на что их можно потратить',
         reply_markup=await keyboard_from_queryset(
             SpendOption,

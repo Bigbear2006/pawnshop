@@ -1,86 +1,100 @@
 [
 {
-  "model": "core.spendoption",
-  "pk": 1,
-  "fields": {
-    "text": "Скидка на покупку 10%"
-  }
-},
-{
-  "model": "core.spendoption",
-  "pk": 2,
-  "fields": {
-    "text": "Какой-то подарок"
-  }
-},
-{
   "model": "core.branch",
   "pk": 1,
   "fields": {
-    "title": "60 лет октября (Красноярский край, г. Красноярск, ул. 60 лет октября д. 62 пом. 1)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. 60 лет октября 62",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz60let",
+    "phone": "250-51-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 2,
   "fields": {
-    "title": "Калинина (660048, г. Красноярск, ул. Калинина, д. 6, пом. 91)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. Калинина 6",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz_Kalinina",
+    "phone": "254-50-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 3,
   "fields": {
-    "title": "Копылова (Красноярский край, г. Красноярск, ул. Копылова, д. 70, пом. 2)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. Копылова 70",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz_market24",
+    "phone": "254-54-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 4,
   "fields": {
-    "title": "Медецинский (г Красноярск пер Медецинский 5)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "пер. Медицинский 5",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz_Med",
+    "phone": "231-55-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 5,
   "fields": {
-    "title": "Свердловская (ул. Свердловская, д. 141 пом 145)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. Свердловская 141",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/almaz_dok",
+    "phone": "203-52-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 6,
   "fields": {
-    "title": "Тельмана (г. Красноярск, ул. Тельмана, д.27, пом. 17)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. Тельмана 27",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz_Telmana",
+    "phone": "259-65-99"
   }
 },
 {
   "model": "core.branch",
   "pk": 7,
   "fields": {
-    "title": "Ширинская (г Красноярск ул Ширинская 3 А пом 36)",
-    "work_schedule": "c 12:00 до 00:00",
-    "manager_url": "https://t.me/johanliebertmonster"
+    "title": "ул. Ширинская 3а",
+    "work_schedule": "Круглосуточно",
+    "manager_url": "https://t.me/Almaz_shirinskay",
+    "phone": "250-53-99"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 1,
+  "fields": {
+    "text": "Скидка  до 20%"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 2,
+  "fields": {
+    "text": "Оплата процентов"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 3,
+  "fields": {
+    "text": "Выкуп залогового имущества"
   }
 },
 {
   "model": "core.onlineevaluationguide",
   "pk": 1,
   "fields": {
-    "text": "Тут будет инструкция по онлайн оценке..."
+    "text": "Отправьте несколько фото, описание вашего товара, укажите марку и модель товара👇🏼 \r\n\r\n⏱️Получите предварительную оценку за считанные минуты!"
   }
 }
 ]

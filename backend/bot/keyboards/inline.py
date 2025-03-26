@@ -9,28 +9,33 @@ menu_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text='Баланс бонусов',
+                text='💰 Баланс бонусов',
                 callback_data='bonus_balance',
             ),
         ],
         [
             InlineKeyboardButton(
-                text='Онлайн оценка',
+                text='🔎 Онлайн оценка',
                 callback_data='online_evaluation',
             ),
         ],
         [
-            InlineKeyboardButton(text='Филиалы', callback_data='branches'),
             InlineKeyboardButton(
-                text='Автозаймы', url=settings.AUTOLOAN_SITE_URL,
+                text='🏪 Адреса и контакты', callback_data='branches',
             ),
         ],
         [
             InlineKeyboardButton(
-                text='Наши соцсети',
+                text='🚗 Автозаймы',
+                url=settings.AUTOLOAN_SITE_URL,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text='📲 Наши соцсети',
                 callback_data='social_media',
             ),
-            InlineKeyboardButton(text='Наш сайт', url=settings.SITE_URL),
+            InlineKeyboardButton(text='🌐 Наш сайт', url=settings.SITE_URL),
         ],
     ],
 )
@@ -44,8 +49,8 @@ to_menu_kb = InlineKeyboardMarkup(
 social_media_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text='ВК', url=settings.VK_URL),
-            InlineKeyboardButton(text='Телеграм', url=settings.TG_URL),
+            InlineKeyboardButton(text='📱 ВК', url=settings.VK_URL),
+            InlineKeyboardButton(text='📩 Телеграм', url=settings.TG_URL),
         ],
         [
             InlineKeyboardButton(

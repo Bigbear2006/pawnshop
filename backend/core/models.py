@@ -89,8 +89,11 @@ class Client(models.Model):
 
 class Branch(models.Model):
     title = models.CharField('Название', max_length=255)
-    work_schedule = models.CharField('График работы', max_length=255)
+    work_schedule = models.CharField(
+        'График работы', max_length=255, default='Круглосуточно',
+    )
     manager_url = models.URLField('Ссылка на менеджера')
+    phone = models.CharField('Телефон менеджера', max_length=255)
     objects: models.Manager
 
     class Meta:

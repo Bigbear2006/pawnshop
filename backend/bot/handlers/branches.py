@@ -26,6 +26,7 @@ async def branches(query: CallbackQuery):
 async def branch_message(query: CallbackQuery):
     branch = await Branch.objects.aget(pk=query.data.split('_')[-1])
     return await query.message.edit_text(
-        f'Филиал {branch.title}\n\nГрафик работы: {branch.work_schedule}',
+        f'📍 {branch.title} ({branch.work_schedule})\n\n'
+        f'📲 {branch.phone}',
         reply_markup=get_branch_keyboard(branch),
     )
