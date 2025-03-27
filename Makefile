@@ -3,6 +3,11 @@ all: run
 run:
 	docker-compose up --build -d
 
+info:
+	echo "create .env"
+	echo "create media/branches/default.png"
+	echo "create directory backend/logs"
+
 logs:
 	docker-compose logs -f
 

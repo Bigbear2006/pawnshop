@@ -2,6 +2,7 @@ from aiogram import types
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django_cleanup import cleanup
 
 
 class User(AbstractUser):
@@ -87,13 +88,16 @@ class Client(models.Model):
         return username
 
 
+@cleanup.ignore
 class Branch(models.Model):
     title = models.CharField('Название', max_length=255)
+    photo = models.ImageField('Фото', upload_to='branches')
     work_schedule = models.CharField(
         'График работы', max_length=255, default='Круглосуточно',
     )
     manager_url = models.URLField('Ссылка на менеджера')
     phone = models.CharField('Телефон менеджера', max_length=255)
+    address_url = models.URLField('Ссылка в яндекс картах')
     objects: models.Manager
 
     class Meta:

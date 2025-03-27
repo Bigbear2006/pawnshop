@@ -4,9 +4,11 @@
   "pk": 1,
   "fields": {
     "title": "ул. 60 лет октября 62",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz60let",
-    "phone": "250-51-99"
+    "phone": "250-51-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -14,9 +16,11 @@
   "pk": 2,
   "fields": {
     "title": "ул. Калинина 6",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz_Kalinina",
-    "phone": "254-50-99"
+    "phone": "254-50-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -24,9 +28,11 @@
   "pk": 3,
   "fields": {
     "title": "ул. Копылова 70",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz_market24",
-    "phone": "254-54-99"
+    "phone": "254-54-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -34,9 +40,11 @@
   "pk": 4,
   "fields": {
     "title": "пер. Медицинский 5",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz_Med",
-    "phone": "231-55-99"
+    "phone": "231-55-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -44,9 +52,11 @@
   "pk": 5,
   "fields": {
     "title": "ул. Свердловская 141",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/almaz_dok",
-    "phone": "203-52-99"
+    "phone": "203-52-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -54,9 +64,11 @@
   "pk": 6,
   "fields": {
     "title": "ул. Тельмана 27",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz_Telmana",
-    "phone": "259-65-99"
+    "phone": "259-65-99",
+    "address_url": "https://google.com"
   }
 },
 {
@@ -64,9 +76,11 @@
   "pk": 7,
   "fields": {
     "title": "ул. Ширинская 3а",
+    "photo": "branches/default.png",
     "work_schedule": "Круглосуточно",
     "manager_url": "https://t.me/Almaz_shirinskay",
-    "phone": "250-53-99"
+    "phone": "250-53-99",
+    "address_url": "https://google.com"
   }
 },
 {

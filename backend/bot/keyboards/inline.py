@@ -127,6 +127,7 @@ def get_branch_keyboard(branch: Branch):
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text='Менеджер', url=branch.manager_url)],
-            [InlineKeyboardButton(text='Назад', callback_data='branches')],
+            [InlineKeyboardButton(text='Построить маршрут', url=branch.address_url)],
+            [InlineKeyboardButton(text='Назад', callback_data='delete_branch_message')],
         ],
     )
