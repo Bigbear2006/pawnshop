@@ -21,7 +21,8 @@ menu_kb = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text='🏪 Адреса и контакты', callback_data='branches',
+                text='🏪 Адреса и контакты',
+                callback_data='branches',
             ),
         ],
         [
@@ -90,6 +91,24 @@ evaluation_kb = InlineKeyboardMarkup(
 )
 
 
+yes_no_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text='Да',
+                callback_data='yes',
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text='Нет',
+                callback_data='no',
+            ),
+        ],
+    ],
+)
+
+
 def one_button_keyboard(
     *,
     back_button_data: str = None,
@@ -127,7 +146,17 @@ def get_branch_keyboard(branch: Branch):
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text='Менеджер', url=branch.manager_url)],
-            [InlineKeyboardButton(text='Построить маршрут', url=branch.address_url)],
-            [InlineKeyboardButton(text='Назад', callback_data='delete_branch_message')],
+            [
+                InlineKeyboardButton(
+                    text='Построить маршрут',
+                    url=branch.address_url,
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text='Назад',
+                    callback_data='delete_branch_message',
+                ),
+            ],
         ],
     )

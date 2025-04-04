@@ -3,7 +3,7 @@ from urllib.parse import unquote
 from aiogram import F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.fsm.context import FSMContext
-from aiogram.types import CallbackQuery, BufferedInputFile, InputMediaPhoto
+from aiogram.types import BufferedInputFile, CallbackQuery, InputMediaPhoto
 
 from bot.keyboards.inline import (
     get_branch_keyboard,
@@ -34,8 +34,9 @@ async def display_branch(query: CallbackQuery, state: FSMContext):
     branch = await Branch.objects.aget(pk=query.data.split('_')[-1])
 
     media = BufferedInputFile.from_file(unquote(branch.photo.url.lstrip('/')))
-    caption = f'📍 {branch.title} ({branch.work_schedule})\n\n' \
-              f'📲 {branch.phone}'
+    caption = (
+        f'📍 {branch.title} ({branch.work_schedule})\n\n📲 {branch.phone}'
+    )
 
     if branch_message_id:
         try:

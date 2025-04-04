@@ -5,8 +5,8 @@ run:
 
 info:
 	echo "create .env"
-	echo "create media/branches/default.png"
 	echo "create directory backend/logs"
+	echo "curl -o backend/media/branches/default.png https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPL8aJ2mzcUwNoGJomClUsUgXYPkRr6ZRRX-PWlWlVx1BqpttEpg-ThcskOVE5nK4KGQo&usqp=CAU"
 
 logs:
 	docker-compose logs -f

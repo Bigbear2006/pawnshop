@@ -1,8 +1,10 @@
 import asyncio
+from dataclasses import asdict
 
 from aiohttp import ClientSession
 
 from bot.loader import logger, loop
+from bot.schemas import RegistrationData
 from bot.settings import settings
 
 
@@ -12,6 +14,18 @@ class SmartLombardAPI:
         return {
             'Authorization': f'Bearer {settings.SMART_LOMBARD_ACCESS_TOKEN}',
         }
+
+    @staticmethod
+    async def register(data: RegistrationData) -> dict | None:
+        async with ClientSession(settings.SMART_LOMBARD_BASE_URL) as session:
+            async with session.post(
+                'clients/natural_persons/',
+                headers=SmartLombardAPI.get_headers(),
+                json=asdict(data),
+            ) as rsp:
+                data = await rsp.json()
+                logger.info(data)
+                return data
 
     @staticmethod
     async def login() -> dict:

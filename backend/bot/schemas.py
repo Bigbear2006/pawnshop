@@ -2,6 +2,19 @@ from dataclasses import dataclass
 
 
 @dataclass
+class RegistrationData:
+    name: str
+    last_name: str
+    birth_date: str
+    registered_city: str
+    street: str
+    house: str
+    phone: str
+    nationality: str
+    appartment: str = None
+
+
+@dataclass
 class BaseResponse:
     status: bool
     http_code: int
