@@ -18,8 +18,8 @@ router = Router()
 async def branches(query: CallbackQuery, state: FSMContext):
     await state.update_data(branch_message_id=None)
 
-    await query.message.edit_text(
-        'Список наших филиалов',
+    await query.message.edit_caption(
+        caption='Список наших филиалов',
         reply_markup=await keyboard_from_queryset(
             Branch,
             prefix='branch',

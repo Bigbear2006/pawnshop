@@ -1,9 +1,12 @@
-import re
-
 from aiogram import F, Router
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.types import CallbackQuery, Message, ReplyKeyboardRemove
+from aiogram.types import (
+    CallbackQuery,
+    FSInputFile,
+    Message,
+    ReplyKeyboardRemove,
+)
 
 from bot.api import SmartLombardAPI
 from bot.keyboards.inline import menu_kb, yes_no_kb
@@ -27,7 +30,8 @@ async def start(msg: Message):
         logger.info(f'Client {client} id={client.pk} was updated')
 
     if client.smart_lombard_id:
-        await msg.answer(
+        await msg.answer_photo(
+            FSInputFile('bot/assets/start.png'),
             f'Привет, {msg.from_user.full_name}!',
             reply_markup=menu_kb,
         )
@@ -66,7 +70,8 @@ async def login(msg: Message, state: FSMContext):
         reply_markup=ReplyKeyboardRemove(),
     )
 
-    await message.answer(
+    await message.answer_photo(
+        FSInputFile('bot/assets/start.png'),
         f'Привет, {msg.from_user.full_name}!',
         reply_markup=menu_kb,
     )
@@ -110,53 +115,8 @@ async def set_name(msg: Message, state: FSMContext):
 @router.message(F.text, StateFilter(RegistrationState.birth_date))
 async def set_birth_date(msg: Message, state: FSMContext):
     await state.update_data(birth_date=msg.text)
-
-    await state.set_state(RegistrationState.address)
-    await msg.answer(
-        'Введите свой адрес (квартиру вводить необязательно).\n'
-        'Пример: Москва, ул. Победы, д. 25, кв. 10\n\n'
-        '* Даже если у вас не улица, а переулок/проспект, '
-        'все равно пишите ул.',
-    )
-
-
-@router.message(F.text, StateFilter(RegistrationState.address))
-async def set_address(msg: Message, state: FSMContext):
-    matches = re.search(
-        r'([А-ЯЁ\s\-]+)(?:,\s*)?ул\.?([А-ЯЁ\s\-\.\d]+)(?:,\s*)?'
-        r'д\.?\s*([А-ЯЁ\d/]+)(?:,\s*)?(?:кв\.?)?\s*(\d+)?',
-        msg.text,
-        re.IGNORECASE,
-    )
-
-    if not matches:
-        await msg.answer('Вы ввели некорректный адрес. Попробуйте еще раз.')
-        return
-
-    registered_city, street, house, appartment = matches.groups()
-    if not registered_city.strip() or not street.strip() or not house:
-        await msg.answer('Вы ввели некорректный адрес. Попробуйте еще раз.')
-        return
-
-    await state.update_data(
-        registered_city=registered_city.strip(),
-        street=street.strip(),
-        house=house,
-        appartment=appartment,
-    )
-
-    await state.set_state(RegistrationState.nationality)
-    await msg.answer(
-        'Введите свое гражданство.\nПример: Россия',
-    )
-
-
-@router.message(F.text, StateFilter(RegistrationState.nationality))
-async def set_nationality(msg: Message, state: FSMContext):
-    await state.update_data(nationality=msg.text)
     data = await state.get_data()
     logger.info(data)
-
     rsp_data = await SmartLombardAPI.register(RegistrationData(**data))
 
     if rsp_data['status']:
@@ -168,7 +128,8 @@ async def set_nationality(msg: Message, state: FSMContext):
             'Вы успешно зарегистрировались!\n',
             reply_markup=ReplyKeyboardRemove(),
         )
-        await msg.answer(
+        await msg.answer_photo(
+            FSInputFile('bot/assets/start.png'),
             'Вы перешли в главное меню',
             reply_markup=menu_kb,
         )
@@ -181,7 +142,8 @@ async def set_nationality(msg: Message, state: FSMContext):
 @router.callback_query(F.data == 'to_menu')
 async def to_menu(query: CallbackQuery, state: FSMContext):
     await state.clear()
-    await query.message.answer(
+    await query.message.answer_photo(
+        FSInputFile('bot/assets/start.png'),
         'Вы перешли в главное меню',
         reply_markup=menu_kb,
     )
@@ -190,7 +152,7 @@ async def to_menu(query: CallbackQuery, state: FSMContext):
 @router.callback_query(F.data == 'switch_to_menu_kb')
 async def switch_to_menu_kb(query: CallbackQuery, state: FSMContext):
     await state.clear()
-    await query.message.edit_text(
-        'Вы перешли в главное меню',
+    await query.message.edit_caption(
+        caption='Вы перешли в главное меню',
         reply_markup=menu_kb,
     )

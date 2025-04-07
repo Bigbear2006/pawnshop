@@ -14,8 +14,8 @@ router = Router()
 @router.callback_query(F.data == 'online_evaluation')
 async def online_evaluation(query: CallbackQuery):
     guide = await OnlineEvaluationGuide.objects.afirst()
-    await query.message.edit_text(
-        guide.text,
+    await query.message.edit_caption(
+        caption=guide.text,
         reply_markup=evaluation_kb,
     )
 

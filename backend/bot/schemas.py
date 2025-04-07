@@ -6,11 +6,11 @@ class RegistrationData:
     name: str
     last_name: str
     birth_date: str
-    registered_city: str
-    street: str
-    house: str
     phone: str
-    nationality: str
+    registered_city: str = 'Не указано'
+    street: str = 'Не указано'
+    house: str = '0'
+    nationality: str = 'Россия'
     appartment: str = None
 
 

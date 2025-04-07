@@ -10,5 +10,3 @@ class RegistrationState(StatesGroup):
     confirmation = State()
     name = State()
     birth_date = State()
-    address = State()
-    nationality = State()
