@@ -1,0 +1,23 @@
+[
+{
+  "model": "core.spendoption",
+  "pk": 1,
+  "fields": {
+    "text": "Скидка  до 20%"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 2,
+  "fields": {
+    "text": "Оплата процентов"
+  }
+},
+{
+  "model": "core.spendoption",
+  "pk": 3,
+  "fields": {
+    "text": "Выкуп залогового имущества"
+  }
+}
+]

@@ -1,9 +1,8 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from django.db.models import Model
 
 from bot.settings import settings
-from core.models import Branch
+from core.models import Branch, OurSite
 
 menu_kb = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -27,16 +26,13 @@ menu_kb = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text='🚗 Автозаймы',
-                url=settings.AUTOLOAN_SITE_URL,
+                text='🌐 Наши сайты',
+                callback_data='our_sites',
             ),
-        ],
-        [
             InlineKeyboardButton(
                 text='📲 Наши соцсети',
                 callback_data='social_media',
             ),
-            InlineKeyboardButton(text='🌐 Наш сайт', url=settings.SITE_URL),
         ],
     ],
 )
@@ -109,39 +105,6 @@ yes_no_kb = InlineKeyboardMarkup(
 )
 
 
-def one_button_keyboard(
-    *,
-    back_button_data: str = None,
-    **kwargs,
-) -> InlineKeyboardMarkup:
-    kb = InlineKeyboardBuilder()
-
-    kb.button(**kwargs)
-    if back_button_data:
-        kb.button(text='Назад', callback_data=back_button_data)
-
-    kb.adjust(1)
-    return kb.as_markup()
-
-
-async def keyboard_from_queryset(
-    model: type[Model],
-    *,
-    prefix: str,
-    back_button_data: str = None,
-) -> InlineKeyboardMarkup:
-    kb = InlineKeyboardBuilder()
-
-    async for obj in model.objects.all():
-        kb.button(text=str(obj), callback_data=f'{prefix}_{obj.pk}')
-
-    if back_button_data:
-        kb.button(text='Назад', callback_data=back_button_data)
-
-    kb.adjust(1)
-    return kb.as_markup()
-
-
 def get_branch_keyboard(branch: Branch):
     return InlineKeyboardMarkup(
         inline_keyboard=[
@@ -160,3 +123,11 @@ def get_branch_keyboard(branch: Branch):
             ],
         ],
     )
+
+
+async def get_our_sites_keyboard():
+    kb = InlineKeyboardBuilder()
+    async for obj in OurSite.objects.all():
+        kb.button(text=obj.text, url=obj.url)
+    kb.button(text='Назад', callback_data='switch_to_menu_kb')
+    return kb.adjust(1).as_markup()

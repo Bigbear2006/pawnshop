@@ -158,3 +158,15 @@ class Publication(models.Model):
 
     def __str__(self):
         return self.text[:100]
+
+
+class OurSite(models.Model):
+    text = models.CharField('Текст', max_length=255)
+    url = models.URLField('URL')
+
+    class Meta:
+        verbose_name = 'Наш сайт'
+        verbose_name_plural = 'Наши сайты'
+
+    def __str__(self):
+        return self.text

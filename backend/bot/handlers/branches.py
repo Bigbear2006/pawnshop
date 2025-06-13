@@ -5,10 +5,8 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.fsm.context import FSMContext
 from aiogram.types import BufferedInputFile, CallbackQuery, InputMediaPhoto
 
-from bot.keyboards.inline import (
-    get_branch_keyboard,
-    keyboard_from_queryset,
-)
+from bot.keyboards.inline import get_branch_keyboard
+from bot.keyboards.utils import keyboard_from_queryset
 from core.models import Branch
 
 router = Router()

@@ -2,7 +2,7 @@ from aiogram import F, Router
 from aiogram.types import CallbackQuery
 
 from bot.api import SmartLombardAPI
-from bot.keyboards.inline import (
+from bot.keyboards.utils import (
     keyboard_from_queryset,
     one_button_keyboard,
 )
@@ -18,8 +18,8 @@ async def bonus_balance(query: CallbackQuery):
 
     await query.message.edit_caption(
         caption=f'Ваш бонусный баланс: {client.get("bonuses") or 0} '
-                f'(1 бонус = 1 рубль)\n'
-                f'Вот на что их можно потратить',
+        f'(1 бонус = 1 рубль)\n'
+        f'Вот на что их можно потратить',
         reply_markup=await keyboard_from_queryset(
             SpendOption,
             prefix='spend_option',

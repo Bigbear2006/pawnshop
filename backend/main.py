@@ -19,6 +19,7 @@ async def main():
         branches,
         commands,
         online_evaluation,
+        our_sites,
         social_media,
     )
 
@@ -27,6 +28,7 @@ async def main():
         bonus_balance.router,
         branches.router,
         online_evaluation.router,
+        our_sites.router,
         social_media.router,
     )
     dp.message.filter(F.chat.type == ChatType.PRIVATE)

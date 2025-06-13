@@ -1,0 +1,18 @@
+[
+{
+  "model": "core.oursite",
+  "pk": 1,
+  "fields": {
+    "text": "🌐 Наш сайт",
+    "url": "https://kras-almaz24.ru"
+  }
+},
+{
+  "model": "core.oursite",
+  "pk": 2,
+  "fields": {
+    "text": "🚗 Автозаймы",
+    "url": "http://auto.kras-almaz.ru"
+  }
+}
+]

@@ -33,11 +33,7 @@ class Settings:
         default='https://online.smartlombard.ru/api/exchange/v1/',
     )
 
-    FORWARD_CHAT_ID: str = field(default='-1002309981972')
-    SITE_URL: str = field(default_factory=lambda: 'https://kras-almaz24.ru')
-    AUTOLOAN_SITE_URL: str = field(
-        default_factory=lambda: 'http://auto.kras-almaz.ru',
-    )
+    FORWARD_CHAT_ID: str = field(default='-4623564575')
     VK_URL: str = field(
         default_factory=lambda: 'https://vk.com/almazlombardkrsk',
     )

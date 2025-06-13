@@ -8,5 +8,6 @@ admin.site.register(models.Branch)
 admin.site.register(models.SpendOption)
 admin.site.register(models.OnlineEvaluationGuide)
 admin.site.register(models.Publication)
+admin.site.register(models.OurSite)
 
 admin.site.unregister(Group)
